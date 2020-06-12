@@ -73,7 +73,7 @@ def open_direct_web(downloaded_file_dir):
 
 # In case of emergency
 def format_date(column):
-    temp = column.str.split(pat = "/")
+    temp = column.str.split(pat = "-")
     temp2 = []
     for i in range(len(temp)):
         if len(temp[i][0]) == 1:
@@ -90,7 +90,7 @@ def generate_graphs(country, threshold = 150):
     
     """
     #In case timeseries.csv is broken, here is another source
-    df = pd.read_csv('covid_19_clean_complete.csv')
+    df = pd.read_csv('covid_19_clean_complete.csv') # https://www.kaggle.com/imdevskp/corona-virus-report
     df['Date'] = format_date(df['Date'])
     if country == "Hong Kong":
         df_x = df[df['Province/State'] == country].fillna(0)
